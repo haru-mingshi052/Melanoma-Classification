@@ -13,13 +13,17 @@
     
 ２．ノートにデータファイルとアップロードしたデータセットを追加  
   
-３．作業ディレクトリに移動  
+３．作業ディレクトリ(tensorflow)に移動  
+```py
 import os  
 path = "..input/データセット名/Melanoma-Classification/tensorflow  
 os.chdir(path)  
+```
   
-４．ファイルの実行  
+４．ファイルの実行 
+```py 
 !python submission.py --model 'モデル名'  
+```
 モデル名 = 'VGG16', 'ResNet', 'SENet', 'EfficientNet'
 </br>
 
