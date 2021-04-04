@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 
-from pre_submission import create_df, read_sub
+from data_preprocessing import create_df, read_sub
 from train import train
 
 import os
@@ -27,6 +27,8 @@ parser = argparse.ArgumentParser(
     description = "folder path"
 )
 
+parser.add_argument("--model", default = 'VGG16', type = str, choices = ['VGG16', 'ResNet', 'SENet', 'EfficientNet'],
+                    help = '[VGG16] or [ResNet] or [SENet] or [EfficientNet]')
 parser.add_argument("--data_folder", default = '/kaggle/input/siim-isic-melanoma-classification', type = str,
                     help = "データの入っているフォルダ")
 parser.add_argument('--output_folder', default = '/kaggle/working', type = str,
@@ -38,7 +40,7 @@ args = parser.parse_args()
 # submission
 #====================
 def submission():
-    model = train(args.data_folder) #学習
+    model = train(args.data_folder, args.model) #学習
 
     df_test = create_df(args.data_folder) #テストファイル読み込み
     sub = read_sub(args.data_folder) #submissionファイル読み込み

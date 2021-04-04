@@ -1,6 +1,4 @@
-import tensorflow
 from keras.layers import Input, Conv2D, BatchNormalization, Activation, GlobalAveragePooling2D, MaxPooling2D, add, Dense
-from keras.optimizers import Adam
 from keras.models import Model
 
 """
@@ -8,9 +6,9 @@ from keras.models import Model
 """
 
 #=====================
-# create_model
+# build_model
 #=====================
-def create_model():
+def resnet():
     input_tensor = Input(shape = (224, 224, 3))
 
     # 1
@@ -84,11 +82,5 @@ def create_model():
     output_tensor = Activation('sigmoid')(dense)
 
     model = Model(input_tensor, output_tensor)
-
-    model.compile(
-        optimizer = Adam(lr = 1e-5),
-        loss = tensorflow.keras.losses.binary_crossentropy,
-        metrics = [tensorflow.keras.metrics.AUC()]
-    )
 
     return model

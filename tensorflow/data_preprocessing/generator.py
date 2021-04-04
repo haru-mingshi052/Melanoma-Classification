@@ -1,6 +1,6 @@
 from keras.preprocessing.image import ImageDataGenerator
 
-from preprocessing import create_df
+from .preprocessing import create_df
 
 """
 学習する用のgeneratorを作成する関数

@@ -1,6 +1,4 @@
-import tensorflow
 from keras.layers import Conv2D, MaxPooling2D, Activation, GlobalAveragePooling2D, Dense, Input
-from keras.optimizers import Adam
 from keras.models import Model
 
 """
@@ -8,9 +6,9 @@ from keras.models import Model
 """
 
 #=====================
-# create_model
+# build_model
 #=====================
-def create_model():
+def vgg16():
     # input
     input_tensor = Input(shape = (224, 224, 3))
     # 1
@@ -55,11 +53,5 @@ def create_model():
     output_tensor = Activation('sigmoid')(dense)
 
     model = Model(input_tensor, output_tensor)
-
-    model.compile(
-        optimizer = Adam(lr = 1e-5),
-        loss = tensorflow.keras.losses.binary_crossentropy,
-        metrics = [tensorflow.keras.metrics.AUC()]
-    )
 
     return model
