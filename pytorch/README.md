@@ -12,7 +12,7 @@
 # 使いかた
 １．kaggleにデータセットとしてファイルをアップロード  
     
-２．ノートにコンペのデータフォルダとアップロードしたデータセットを追加  
+２．ノートに[データセット](https://www.kaggle.com/cdeotte/jpeg-melanoma-256x256)とアップロードしたデータセットを追加  
 
 ３．必要なライブラリのインストール  
 ```py
@@ -23,7 +23,7 @@
 ４．作業ディレクトリ(pytorch/section0x)に移動  
 ```py
 import os  
-path = "..input/データセット名/Melanoma-Classification/pytorch/section0x
+path = "..input/データセット名/Melanoma-Classification/pytorch/section0x"
 os.chdir(path)  
 ```
   
@@ -31,5 +31,4 @@ os.chdir(path)
 ```py 
 !python submission.py 
 ```
-モデル名 = 'VGG16', 'ResNet', 'SENet', 'EfficientNet'
 </br>
