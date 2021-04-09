@@ -6,6 +6,7 @@ kaggleで開催されていたコンペ-Melanoma Classififcation-のノートで
 
 # フォルダについて  
 tensoflow：tensorflowを使ってモデルを作成した時のノートです  
+pytorch：pytorchを使ってモデルを作成した時のノートです  
 </br>
 
 # 必要なライブラリ・使いかた  
