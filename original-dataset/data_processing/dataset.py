@@ -4,14 +4,10 @@ import cv2
 
 from torch.utils.data import Dataset
 
-
 """
-pytorchのデータセットを作成する関数
+pytorchのデータセット
 """
 
-#================================
-# Melanoma Dataset
-#================================
 class MelanomaDataset(Dataset):
     def __init__(self, df, imfolder, train, transforms, meta_features):
         self.df = df

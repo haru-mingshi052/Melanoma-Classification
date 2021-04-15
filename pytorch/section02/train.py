@@ -18,6 +18,10 @@ from models import Net
 from transformer import train_transform, test_transform
 from data_processing import MelanomaDataset, create_data
 
+"""
+モデルを学習させる関数
+"""
+
 def train(data_folder, output_folder, es_patience, epochs, TTA, model_name):
     device = torch.device('cuda' if torch.cuda.is_available() else "cpu")
     print("使用デバイス：", device)

@@ -18,7 +18,7 @@ class Net(nn.Module):
             nn.BatchNorm1d(500),
             nn.ReLU(),
             nn.Dropout(p=0.2),
-            nn.Linear(500, 250),  # FC layer output will have 250 features
+            nn.Linear(500, 250),
             nn.BatchNorm1d(250),
             nn.ReLU(),
             nn.Dropout(p=0.2)
@@ -26,10 +26,6 @@ class Net(nn.Module):
         self.ouput = nn.Linear(500 + 250, 1)
 
     def forward(self, inputs):
-        """
-        No sigmoid in forward because we are going to use BCEWithLogitsLoss
-        Which applies sigmoid for us when calculating a loss
-        """
         x, meta = inputs
         cnn_features = self.arch(x)
         meta_features = self.meta(meta)

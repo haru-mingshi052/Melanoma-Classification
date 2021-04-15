@@ -32,6 +32,10 @@ parser.add_argument('--model_name', default = 'pytorch-1', type = str, choices =
 
 args = parser.parse_args()
 
+#=========================
+# submission
+#=========================
+
 def submission():
 
     seed_everything(71)
@@ -45,7 +49,7 @@ def submission():
         model_name = args.model_name,
     )
 
-    pd.Series(oof.reshape(-1)).to_csv(args.data_folder + '/oof.csv', index = False)
+    pd.Series(oof.reshape(-1)).to_csv(args.output_folder + '/oof.csv', index = False)
 
     sub = pd.read_csv(args.data_folder + '/sample_submission.csv')
     sub['target'] = preds.cpu().numpy().reshape(-1,)

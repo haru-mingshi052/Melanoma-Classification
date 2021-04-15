@@ -32,6 +32,10 @@ parser.add_argument('--model_name', default = 'pytorch-1', type = str, choices =
 
 args = parser.parse_args()
 
+#==============================
+# submission
+#==============================
+
 def submission():
 
     seed_everything(71)

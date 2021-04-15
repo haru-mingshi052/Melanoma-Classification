@@ -4,12 +4,12 @@ import cv2
 import os
 
 """
-transformerに追加する関数
+transformerに使うaugmentation
 """
 
-#===================================
+#====================================
 # AdvancedHairAugmentation
-#===================================
+#====================================
 class AdvancedHairAugmentation:
     def __init__(self, hairs = 5, hairs_folder = '/kaggle/input/melanoma-hairs'):
         self.hairs = hairs
@@ -51,9 +51,9 @@ class AdvancedHairAugmentation:
     def __repr__(self):
         return f'{self.__class__.__name__}(hairs = {self.hairs}, hairs_folder = "{self.hairs_folder}")'
 
-#==========================
+#============================
 # Microscope
-#==========================
+#============================
 class Microscope:
     def __init__(self, p = 0.5):
         self.p = p
@@ -75,3 +75,28 @@ class Microscope:
 
     def __repr__(self):
         return f'{self.__class__.__name__}(p = {self.p})'
+
+#=============================
+# DrawHair
+#=============================
+class DrawHair:
+    def __init__(self, hairs = 4, width = (1,2)):
+        self.hairs = hairs
+        self.width = width
+
+    def __call__(self, img):
+        if not self.hairs:
+            return img
+
+        width, height, _ = img.shape
+
+        for _ in range(random.randint(0, self.hairs)):
+            origin = (random.randint(0, width), random.randint(0, height // 2))
+            end = (random.randint(0, width), random.randint(0, height))
+            color = (0, 0, 0)
+            cv2.line(img, origin, end, color, random.randint(self.width[0], self.width[1]))
+
+        return img
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}(hairs = {self.hairs}, width = {self.width})'

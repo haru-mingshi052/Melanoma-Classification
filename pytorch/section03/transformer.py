@@ -2,6 +2,10 @@ import torchtoolbox.transform as transforms
 
 from augmentation import *
 
+"""
+データセットで使うtransformerの定義
+"""
+
 train_transform = transforms.Compose([
     DrawHair(hairs = 5, width = (1,2)), #追加
     transforms.RandomResizedCrop(size = 256, scale = (0.8, 1.0)),

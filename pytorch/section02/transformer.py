@@ -2,6 +2,10 @@ import torchtoolbox.transform as transforms
 
 from augmentation import AdvancedHairAugmentation, Microscope
 
+"""
+データセットで使うtransformerの定義
+"""
+
 train_transform = transforms.Compose([
     AdvancedHairAugmentation(hairs_folder = '/kaggle/input/melanoma-hairs'), #追加
     transforms.RandomResizedCrop(size = 256, scale = (0.8, 1.0)),

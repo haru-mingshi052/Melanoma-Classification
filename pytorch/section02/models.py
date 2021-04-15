@@ -1,6 +1,10 @@
 import torch
 import torch.nn as nn
 
+"""
+モデルの定義
+"""
+
 class Net(nn.Module):
     def __init__(self, arch, n_meta_features: int):
         super(Net, self).__init__()

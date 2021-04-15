@@ -17,7 +17,7 @@ parser = argparse.ArgumentParser(
     description = "parameter for training"
 )
 
-parser.add_argument("--data_folder", default = '/kaggle/input/jpeg-melanoma-256x256', type = str,
+parser.add_argument("--data_folder", type = str,
                     help = 'データの入っているフォルダ')
 parser.add_argument('--output_folder', default = '/kaggle/working', type = str,
                     help = "提出用ファイルを出力するフォルダ")
@@ -27,15 +27,11 @@ parser.add_argument('--epochs', default = 15, type = int,
                     help = "何エポック学習するか")
 parser.add_argument('--TTA', default = 3, type = int,
                     help = 'TTAの値')
-parser.add_argument('--model_name', default = 'pytorch-1', type = str, choices = ['pytorch-1', 'pytorch-2', 'pytorch-3'],
-                    help = '[pytorch-1] or [pytorch-2] or [pytorch-3]')
-
 args = parser.parse_args()
 
-#===============================
+#============================
 # submission
-#===============================
-
+#============================
 def submission():
 
     seed_everything(71)
@@ -46,7 +42,6 @@ def submission():
         es_patience = args.es_patience,
         epochs = args.epochs,
         TTA = args.TTA,
-        model_name = args.model_name,
     )
 
     pd.Series(oof.reshape(-1)).to_csv(args.output_folder + '/oof.csv', index = False)

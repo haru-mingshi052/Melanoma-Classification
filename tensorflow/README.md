@@ -1,5 +1,4 @@
-# 必要なライブラリ  
-・python 3系  
+# 必要なライブラリ   
 ・numpy  
 ・pandas  
 ・scikit-learn  
@@ -8,24 +7,5 @@
 ・efficientnet  
 </br>
 
-# 使いかた  
-１．kaggleにデータセットとしてファイルをアップロード  
-    
-２．ノートにコンペのデータフォルダとアップロードしたデータセットを追加  
-  
-３．作業ディレクトリ(tensorflow)に移動  
-```py
-import os  
-path = "..input/データセット名/Melanoma-Classification/tensorflow  
-os.chdir(path)  
-```
-  
-４．ファイルの実行 
-```py 
-!python submission.py --model 'モデル名'  
-```
-モデル名 = 'VGG16', 'ResNet', 'SENet', 'EfficientNet'
-</br>
-
 # 参考文献  
-https://www.kaggle.com/ibtesama/siim-baseline-keras-vgg16
+https://www.kaggle.com/ibtesama/siim-baseline-keras-vgg16  

@@ -1,12 +1,22 @@
 import pandas as pd
 import numpy as np
 
+"""
+データ加工を行う関数各種
+"""
+
+#============================
+# read_data
+#============================
 def read_data(data_folder):
     train = pd.read_csv(data_folder + '/train.csv')
     test = pd.read_csv(data_folder + '/test.csv')
     return train, test
 
-#anatom_siteのone_hot_encoder
+#==================================
+# anatom_site
+# anatom_siteのone_hot_encoder
+#==================================
 def anatom_site(train, test):
     concat = pd.concat([train['anatom_site_general_challenge'], test['anatom_site_general_challenge']], ignore_index = True)
     dummies = pd.get_dummies(concat, dummy_na = True, dtype = np.uint8, prefix = 'site')
@@ -15,6 +25,9 @@ def anatom_site(train, test):
 
     return train, test
 
+#===============================
+# preprocessing
+#===============================
 def preprocessing(train, test):
     #sexのmapping
     train['sex'] = train['sex'].map({'male' : 1, 'female' : 0})

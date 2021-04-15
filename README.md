@@ -7,7 +7,8 @@ kaggleで開催されていたコンペ-Melanoma Classififcation-のノートで
 # フォルダについて  
 tensoflow：tensorflowを使ってモデルを作成した時のノートです  
 pytorch：pytorchを使ってモデルを作成した時のノートです  
+original-dataset：データセットの作成から行ったノートです
 </br>
 
-# 必要なライブラリ・使いかた  
+# 必要なライブラリ  
 それぞれのフォルダのREADMEを参照

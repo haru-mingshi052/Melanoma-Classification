@@ -3,6 +3,7 @@ if '__file__' in globals():
     sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 import numpy as np
+import pandas as pd
 import time
 import datetime
 from sklearn.model_selection import KFold
@@ -16,25 +17,27 @@ from efficientnet_pytorch import EfficientNet
 
 from models import Net
 from transformer import train_transform, test_transform
-from data_processing import MelanomaDataset, create_data
+from data_processing.dataset import MelanomaDataset
 
 """
 モデルを学習させる関数
 """
 
-def train(data_folder, output_folder, es_patience, epochs, TTA, model_name):
+def train(data_folder, output_folder, es_patience, epochs, TTA):
     device = torch.device('cuda' if torch.cuda.is_available() else "cpu")
     print("使用デバイス：", device)
 
-    train, test = create_data(data_folder)
+    train = pd.read_csv(data_folder + '/train.csv')
+    test = pd.read_csv(data_folder + '/test.csv')
 
     arch = EfficientNet.from_pretrained('efficientnet-b1') #モデル
 
-    meta_features = ['sex', 'age_approx'] + [col for col in train.columns if 'site_' in col]
-    meta_features.remove('anatom_site_general_challenge')
-
+    meta_features = list(train.columns)
+    meta_features.remove('image_name')
+    meta_features.remove('target')
+    meta_features.remove('fold')
+    
     #パラメータ各種
-
     oof = np.zeros((len(train), 1))
     preds = torch.zeros((len(test), 1), dtype = torch.float32, device = device)
 

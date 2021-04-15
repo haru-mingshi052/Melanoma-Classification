@@ -3,7 +3,14 @@ import random
 import cv2
 import os
 
-#AdvancedHairAugmentation
+
+"""
+transformerに追加する関数
+"""
+
+#=================================
+# AdvancedHairAugmentation
+#=================================
 class AdvancedHairAugmentation:
     def __init__(self, hairs = 5, hairs_folder = '/kaggle/input/melanoma-hairs'):
         self.hairs = hairs
@@ -45,7 +52,9 @@ class AdvancedHairAugmentation:
     def __repr__(self):
         return f'{self.__class__.__name__}(hairs = {self.hairs}, hairs_folder = "{self.hairs_folder}")'
 
-#Microscope
+#=======================
+# Microscope
+#=======================
 class Microscope:
     def __init__(self, p = 0.5):
         self.p = p
@@ -68,7 +77,9 @@ class Microscope:
     def __repr__(self):
         return f'{self.__class__.__name__}(p = {self.p})'
 
-#DrawHair
+#=======================
+# DrawHair
+#=======================
 class DrawHair:
     def __init__(self, hairs = 4, width = (1,2)):
         self.hairs = hairs
