@@ -1,7 +1,7 @@
 import tensorflow
 from keras.optimizers import Adam
 from Models import *
-from data_preprocessing import create_generator
+from data_processing import create_generator
 
 """
 train：モデルを学習させる関数
